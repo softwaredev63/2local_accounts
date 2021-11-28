@@ -1,0 +1,38 @@
+{
+    "name": "carlson/nova-link-field",
+    "description": "A Laravel Nova field for HTML links.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "anchor",
+        "link"
+    ],
+    "authors": [
+        {
+            "name": "Andrew Carlson",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Carlson\\NovaLinkField\\": "src/"
+        }
+    },
+    "extra": {
+        "component": "package",
+        "laravel": {
+            "providers": [
+                "Carlson\\NovaLinkField\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
