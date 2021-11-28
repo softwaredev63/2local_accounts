@@ -1,0 +1,45 @@
+/* Base Elements */
+.table,
+a,
+body,
+h1,
+h2,
+h3,
+html,
+label,
+ol,
+p,
+table,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: auto;
+    font-family: $font-main;
+    color: $text;
+    background: $body-bg 0% 0% no-repeat padding-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    .login & {
+        margin: 0;
+    }
+
+    .centered & {
+        padding: 80px 8px 0;
+
+        > * {
+            //margin-bottom: 24px;
+        }
+    }
+}
+
+.menu-open,
+.no-scroll {
+    overflow: hidden;
+}

@@ -1,0 +1,23 @@
+
+.container-fluid {
+    padding: 0 rem-calc(110px);
+    @include media-breakpoint-down(xl) {
+        padding: 0 rem-calc(20px);
+    }
+}
+
+.btn {
+    .default-text {
+        color: inherit;
+    }
+}
+.btn-primary {
+    color: $black;
+    background-color: $primary;
+    border-color: $primary;
+    &:hover, &:active {
+        color: $white;
+        background-color: $primary;
+        border-color: $secondary;
+    }
+}

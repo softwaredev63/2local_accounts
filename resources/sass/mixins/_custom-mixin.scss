@@ -1,0 +1,178 @@
+//  ========================================================================
+//  General
+//  ======================================================================== 
+@mixin content-center ($center: 'all') {
+    position: absolute;
+
+    @if $center == 'all' {
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @else if $center == 'horizontal' {
+        top      : 0;
+        left     : 50%;
+        transform: translateX(-50%);
+    }
+
+    @else if $center == 'vertical' {
+        left     : 0;
+        top      : 50%;
+        transform: translateY(-50%);
+    }
+}
+@mixin hover-state () {
+    &:active, &:hover {
+        outline   : none;
+        box-shadow: none;
+        @content;
+    }
+}
+@mixin focus-state () {
+    &.focus, &:focus {
+        outline        : none;
+        box-shadow     : none;
+        text-decoration: none;
+        @content;
+    }
+}
+@mixin img-responsive () {
+    display  : block;
+    max-width: 100%;
+    height   : auto;
+}
+@mixin hide-input () {
+    position  : absolute;
+    opacity   : 0;
+    left      : -9999px;
+    visibility: hidden;
+}
+
+//  ========================================================================
+//  Custom
+//  ========================================================================
+$font-size-base-px: 16px;
+@function rem-calc($px) {
+     @return $px / $font-size-base-px * 1rem;
+}
+@mixin aspect-ratio($arglist... /*$ratio or $width, $height*/) {
+    $map    : keywords($arglist);
+
+    $width  : map-get($map, width) or nth-value($arglist, 1);
+    $height : map-get($map, height) or nth-value($arglist, 2);
+    $ratio  : map-get($map, ratio) or if($width and $height, $width/$height, nth-value($arglist, 1)) or 1;
+    $padding: 1/$ratio * 100%;
+
+    &::after, &::before {
+        content    : '';
+        display    : table;
+        clear      : both;
+        width      : 1px;
+        margin-left: -1px;
+    }
+
+    &::before {
+        float         : left;
+        padding-bottom: $padding;
+    }
+}
+// Helper function 
+// Return null rather than throwing an error if index is outside list range.    
+@function nth-value($list, $index) {
+     @return if(length($list) >= $index, nth($list, $index), null);
+}
+@mixin twolocal-checkboxes-radios ($container, $inner-container, $border, $radius, $pad-left:null, $radio-pos:null, $label-Hcolor:$text ) {
+    [type="checkbox"], [type="radio"] {
+        &:checked, &:not(:checked) {
+            @include hide-input ();
+
+            + label {
+                position    : relative;
+                display     : flex;
+                height      : $container;
+                height      : auto;
+                padding-left: $pad-left;
+                cursor      : pointer;
+                @include hover-state () {
+                    &::before {
+                        border-color: $primary;
+                    }
+
+                    p {
+                        color: $label-Hcolor;
+                    }
+                }
+
+                &::before {
+                    position     : absolute;
+                    content      : '';
+                    top          : 0;
+                    left         : 0;
+                    width        : $container;
+                    height       : $container;
+                    background   : $white;
+                    border       : $border solid $text;
+                    border-radius: $radius;
+                    transition   : all .2s ease-in-out;
+                    @include hover-state () {}
+                }
+
+                &::after {
+                    position     : absolute;
+                    content      : '';
+                    top          : $radio-pos;
+                    left         : $radio-pos;
+                    width        : $inner-container;
+                    height       : $inner-container;
+                    background   : $primary;
+                    border-radius: $radius;
+                    transition   : all .3s ease-in-out;
+                }
+
+                .icon {
+                    position       : absolute;
+                    top            : 0;
+                    left           : 0;
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+                    width          : $container;
+                    height         : $container;
+                    font-size      : 10px;
+                    color          : $white;
+                    z-index        : 1;
+                }
+
+                p {
+                    font-size : 14px;
+                    color     : $text;
+                    margin    : 0;
+                    transition: all .2s ease-in-out;
+                }
+            }
+        }
+
+        &:not(:checked) + label:after {
+            opacity  : 0;
+            transform: scale(0);
+        }
+
+        &:checked {
+            + label {
+                &::before {
+                    border: $border solid $primary;
+                }
+
+                &::after {
+                    opacity  : 1;
+                    transform: scale(1);
+                }
+
+                p {
+                    color: $label-Hcolor;
+                }
+            }
+        }
+    }
+}

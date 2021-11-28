@@ -1,0 +1,260 @@
+/* Form */
+
+.form-group {
+    display       : flex;
+    flex-direction: column;
+    margin-bottom : 8px;
+
+    .login & {
+        margin-bottom: 12px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    .modal & {
+        .form-control {
+            @include focus-state() {
+                border-color: $primary;
+            }
+        }
+    }
+
+    .input-group-text {
+        font-size: 13px;
+        padding  : 4px 8px;
+    }
+}
+
+.twolocal-checkbox {
+    @include twolocal-checkboxes-radios (18px, 18px, 1px, 2px, 25px, 0);
+
+    display      : flex;
+    margin-bottom: 8px;
+
+    .login & {
+        margin: 24px 0 0;
+    }
+}
+
+.twolocal-radio {
+    @include twolocal-checkboxes-radios (18px, 18px, 1px, 50%, 25px, 0);
+
+    display      : flex;
+    margin-bottom: 8px;
+}
+
+.twolocal-input {
+    overflow   : hidden;
+    position   : relative;
+    width      : 100%;
+    font-size  : 16px;
+    line-height: 1.5;
+    padding-top: 6px;
+
+    &.with-pass-strength {
+        > textarea, > input {
+            &:not(:placeholder-shown) {
+                border-color    : $secondary;
+
+                + span {
+                    color: $secondary;
+                }
+
+                &.error {
+                    + span {
+                        line-height: 15px;
+                    }
+                }
+            }
+
+            &:focus:not(:placeholder-shown) {
+                border-color    : $secondary;
+
+                + span {
+                    color: $text;
+                }
+
+                &.error {
+                    + span {
+                        line-height: 15px;
+                    }
+                }
+            }
+        }
+
+        .progress {
+            margin-top: 10px;
+        }
+    }
+
+     > textarea, > input, > select {
+        box-sizing      : border-box;
+        width           : 100%;
+        height          : inherit;
+        font-size       : 16px;
+        color           : $text;
+        background      : transparent;
+        padding         : 8px 12px;
+        margin          : 0;
+        border          : solid 1px $gray-50;
+        border-top-color: transparent;
+        border-radius   : 2px;
+        box-shadow      : none;
+        transition      : all .2s;
+        @include hover-state() {
+            border-color    : $secondary;
+            border-top-color: transparent;
+
+            + span {
+                &::after, &::before {
+                    border-top-color: $secondary;
+                }
+            }
+
+            &:not(:focus):placeholder-shown {
+                border-color: $secondary;
+            }
+        }
+        @include focus-state() {
+            border-color    : $secondary;
+            border-top-color: transparent;
+            outline         : none;
+
+            + span {
+                color: $text;
+
+                &::after, &::before {
+                    border-top-color: $secondary;
+                }
+            }
+        }
+
+        + span {
+            position      : absolute;
+            top           : 0;
+            left          : 0;
+            display       : flex;
+            width         : 100%;
+            max-height    : 100%;
+            font-size     : 85%;
+            line-height   : 15px;
+            letter-spacing: 1px;
+            color         : $black-50;
+            border-color  : $white;
+            transition    : color .3s, font-size .3s, line-height .3s;
+            cursor        : text;
+
+            /* Corners */
+            &::after, &::before {
+                pointer-events  : none;
+                box-sizing      : border-box;
+                display         : block;
+                content         : "";
+                min-width       : 10px;
+                height          : 8px;
+                margin-top      : 6px;
+                border-top      : solid 1px;
+                border-top-color: $secondary;
+                transition      : border-color .2s, box-shadow .2s;
+            }
+
+            &::before {
+                margin-right : 4px;
+                border-left  : solid 1px transparent;
+                border-radius: 2px 0;
+            }
+
+            &::after {
+                flex-grow    : 1;
+                margin-left  : 4px;
+                border-right : solid 1px transparent;
+                border-radius: 0 2px;
+            }
+        }
+
+        /* Validation */
+        &:not(:focus):placeholder-shown {
+            &.error {
+                border-color: $twolocal-error !important;
+            }
+        }
+
+        &.error {
+            border-color    : $twolocal-error !important;
+            border-top-color: transparent !important;
+
+            + span {
+                line-height: 12px;
+
+                &::after, &::before {
+                    border-top-color: $twolocal-error;
+                }
+            }
+        }
+
+        /* Placeholder-shown */
+        &:not(:focus):placeholder-shown {
+            border-top-color: $gray-50;
+
+            + span {
+                font-size  : 14px;
+                line-height: 54px;
+
+                &::after, &::before {
+                    border-top-color: transparent;
+                }
+            }
+        }
+
+        &:not(:placeholder-shown) {
+            border-color    : $secondary;
+            border-top-color: transparent;
+
+            + span {
+                color: $secondary;
+            }
+
+            &.error {
+                + span {
+                    line-height: 15px;
+                }
+            }
+        }
+
+        &:focus:not(:placeholder-shown) {
+            border-color    : $secondary;
+            border-top-color: transparent;
+
+            + span {
+                color: $text;
+            }
+
+            &.error {
+                + span {
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+
+    label {
+        display       : flex;
+        flex-direction: column;
+        font-size     : 12px;
+        letter-spacing: .2px;
+        color         : $twolocal-error;
+        margin-top    : 8px;
+    }
+
+    > textarea {
+        resize: none;
+    }
+
+    &.affiliate-code {
+        input {
+            border-color: #000E2E!important;
+        }
+    }
+}

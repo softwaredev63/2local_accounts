@@ -1,0 +1,34 @@
+// Login
+
+.onboarding {
+    position: relative;
+    padding : 24px 0;
+    z-index : 100;
+
+    article {
+        display       : flex;
+        flex-direction: column;
+        background    : $white;
+        padding       : 32px;
+        box-shadow    : 0 0 4px rgba(0,0,0,0.10), 0 8px 8px rgba(0,0,0,0.08);
+    }
+
+    form {
+        margin: 8px 0;
+    }
+
+    hr {
+        width: 100%;
+    }
+
+    .bot {
+        a {
+            font-size: rem-calc(14px);
+        }
+
+        span {
+            padding: 0 8px;
+        }
+    }
+
+}

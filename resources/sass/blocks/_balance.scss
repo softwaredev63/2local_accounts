@@ -1,0 +1,310 @@
+// Balance
+.text-primary {
+    color: $primary!important;
+}
+
+.text-secondary {
+    color: $secondary!important;
+}
+
+.balance-text, .settings-text {
+    font-family: Swiss721BT;
+    font-style     : normal;
+    font-variant   :normal;
+    font-weight    : bold;
+    font-size      : rem-calc(45px);
+    line-height    : rem-calc(80px);
+    letter-spacing: 1px;
+    color: $secondary-2;
+    margin: 28px 0;
+}
+
+.default-text {
+    font-family: Swiss721BT;
+    font-style     : normal;
+    font-variant   :normal;
+    font-weight    : normal;
+    font-size      : rem-calc(18px);
+    line-height    : rem-calc(22px);
+    letter-spacing: 0.05px;
+    color: $black;
+    &.margin-default {
+        margin-bottom: rem-calc(35px);
+    }
+    &.table-title {
+        margin-top: rem-calc(35px);
+        margin-bottom: rem-calc(35px);
+        font-weight: bold;
+    }
+}
+
+.text-label {
+    font-size: rem-calc(18px);
+    line-height: rem-calc(24px);
+    font-weight: bold;
+
+    letter-spacing: 0.06px;
+    color: $text-muted;
+    opacity: 0.5;
+}
+
+.tokens-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    font-size: rem-calc(18px);
+    line-height: rem-calc(18px);
+    font-weight: bold;
+    align-items: center;
+    &.action {
+        width: inherit;
+        justify-content: space-between;
+    }
+
+    & .logo {
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+        & img {
+            width: inherit;
+            height: inherit;
+            display: block;
+        }
+    }
+    & .symbol {
+        color: $secondary-2;
+        margin-right: 10px;
+    }
+
+    & .name {
+        opacity: 0.5;
+    }
+}
+
+.balances-container {
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: $box-shadow;
+    border-radius: 12px;
+    padding: 0 45px;
+    & .balance-tab {
+        height: 90px;
+    }
+    .column {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    & .balance-button {
+        height: rem-calc(50px);
+        background: $gray-button-bg 0% 0% no-repeat padding-box;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding: 0 20px;
+        cursor: pointer;
+        &.btn {
+            border-color: unset;
+            border: unset;
+            color: inherit;
+            &:active, &:hover {
+                outline: none;
+                box-shadow: none;
+                border: 2px solid $secondary;
+                color: inherit;
+                background: $gray-button-bg 0% 0% no-repeat padding-box;
+            }
+        }
+        & input {
+            display: none;
+        }
+    }
+
+    .line {
+        height: 1px;
+        background: $border;
+    }
+
+    span.symbol-updated {
+        border: 1px solid $green;
+        color: $green;
+        font-family: inherit;
+        font-size: 11px;
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 24px;
+        padding: 0 12px;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 15px;
+    }
+
+    span.symbol-sending {
+        border: 1px solid $primary;
+        color: $primary;
+        font-family: inherit;
+        font-size: 11px;
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 24px;
+        padding: 0 12px;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 15px;
+    }
+
+    span.address-container {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .balances-container {
+        padding: 0 5px;
+    }
+}
+.affiliate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    #affiliate-link {
+        font-size: 1rem;
+        font-weight: normal;
+        color: $primary;
+        text-decoration: underline;
+        margin: 0;
+    }
+    .copy-btn {
+        cursor: pointer;
+    }
+}
+
+.intro {
+    .alert-danger {
+        font-weight: bold;
+        display: inline-block;
+    }
+}
+
+.dark-logo {
+    color: $secondary;
+}
+
+.confirm-password {
+    margin-top: 1rem;
+}
+
+.centered-modal-buttons {
+    text-align: center;
+}
+
+.key, .show-phrases {
+    word-wrap: break-word;
+}
+
+.something-went-wrong {
+    color: red;
+    font-weight: bold;
+}
+
+#generatePhrases , #userPhrasesWizard{
+    .generate-phrases {
+        margin-top: 1rem;
+        & .centered-modal-buttons {
+            margin-top: 2rem;
+        }
+    }
+
+    .show-phrases {
+        justify-content: center;
+        display: flex;
+    }
+
+    form {
+        display: none;
+    }
+
+    .private-phrases {
+        padding: 1em;
+        background: rgba(0,0,0,0.1);
+        color: $primary;
+        display: none;
+    }
+}
+
+#userPhrasesWizard {
+    .toolbar.toolbar-bottom {
+        .btn {
+            display: none;
+            &.show {
+                display: inline-block;
+            }
+        }
+    }
+    &:before {
+        border: 10px solid $primary;
+        border-top: 10px solid $secondary;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+#sendTokenModal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+
+            }
+            .modal-body {
+
+            }
+        }
+    }
+    .btn-send-token {
+
+    }
+}
+
+.send-crypto-form {
+    background: $white;
+    padding: 30px;
+    .row {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .tokens-column {
+        justify-content: flex-start;
+        .name {
+            margin-right: 10px;
+        }
+        .balance-value {
+
+        }
+    }
+}
+
+.send-crypto-result {
+    background: $white;
+    padding: 30px;
+    border: 2px solid $primary;
+    .row {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border-bottom: 1px solid $primary;
+        font-size: rem-calc(18px);
+        .label {
+            color: $secondary;
+            font-weight: bold;
+            min-width: rem-calc(170px);
+        }
+        .value {
+
+        }
+    }
+}

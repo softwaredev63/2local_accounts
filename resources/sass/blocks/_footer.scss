@@ -1,0 +1,70 @@
+// Footer
+
+footer {
+    display        : flex;
+    justify-content: space-between;
+    padding        : 16px 24px;
+    margin-top     : auto;
+    border-top     : 1px solid $gray-20;
+    @include media-breakpoint-down(xm) {
+        flex-direction: column-reverse;
+        align-items   : center;
+    }
+
+    .login & {
+        justify-content: center;
+    }
+
+    .links {
+        @include media-breakpoint-down(sm) {
+            margin: 0 0 16px;
+        }
+
+        a {
+            font-size      : rem-calc(14px);
+            text-decoration: none;
+            color          : $text;
+            transition     : .2s ease-in-out;
+            @include hover-state () {
+                color: $primary;
+            }
+
+            &:not(:last-child) {
+                margin-right: 16px;
+            }
+        }
+    }
+
+    .onboarding-img {
+        img {
+            position: fixed;
+            height  : 60vh;
+            @include media-breakpoint-down(lg) {
+                height: 40vh;
+            }
+            @include media-breakpoint-down(md) {
+                height: 30vh;
+            }
+            @include media-breakpoint-down(sm) {
+                display: none;
+            }
+
+            &.bot-left {
+                bottom: 57px;
+                left  : 0;
+            }
+
+            &.bot-right {
+                bottom   : 57px;
+                right    : 0;
+                transform: scaleX(-1);
+            }
+        }
+    }
+
+    .trademark {
+        span {
+            font-size: rem-calc(12px);
+        }
+    }
+}

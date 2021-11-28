@@ -1,0 +1,62 @@
+//  ========================================================================
+//  Variables
+//  ========================================================================
+$enable-grid-classes : true !default;
+
+$grid-breakpoints    : ( xs: 0, xm: 420px, sm: 576px, md: 768px, lg: 991px, xl: 1200px, xxl: 1500px) !default;
+$container-max-widths: ( sm: 540px, md: 720px, lg: 960px, xl: 1140px ) !default;
+
+$grid-columns        : 12 !default;
+$grid-gutter-width   : 32px !default;
+$grid-row-columns    : 6 !default;
+
+//  ========================================================================
+//  Colors
+//  ========================================================================
+$white               : #fff !default;
+$white-10            : rgba($white, 0.1) !default;
+$white-20            : rgba($white, 0.2) !default;
+$white-30            : rgba($white, 0.3) !default;
+$white-50            : rgba($white, 0.5) !default;
+$white-60            : rgba($white, 0.6) !default;
+
+$black               : #000 !default;
+$black-10            : rgba($black, 0.1) !default;
+$black-20            : rgba($black, 0.2) !default;
+$black-30            : rgba($black, 0.3) !default;
+$black-50            : rgba($black, 0.5) !default;
+
+$gray                : #8f8f8f !default;
+$gray-10             : rgba($gray, 0.1) !default;
+$gray-20             : rgba($gray, 0.2) !default;
+$gray-50             : rgba($gray, 0.5) !default;
+$gray-button-bg      : #EFF2F7;
+
+$green               : #04c44c !default;
+
+$body-color          : #333 !default;
+$body-bg             : #FAFBFE!default;
+
+$primary             : #DF642B !default;
+$secondary           : #000E2E !default;
+
+$text                : #4d5156 !default;
+
+$twolocal-error      : #DE1A1A !default;
+
+$secondary-2       : #4C566C !default;
+$text-muted            : #1D2943 !default;
+
+$border             : #DDDFE2 !default;
+
+$box-shadow         :0px 5px 12px #F0F2F77C;
+
+// $dashboard-gradient-dark-light: linear-gradient(0deg, $black 0%, $white 100%);
+
+//  ========================================================================
+//  Fonts
+//  ========================================================================
+$font-main           : Swiss721BT;
+//  font-weights:                300     400     500     700     900      //
+
+$marginContainer     : 30px 45px 20px 45px;
