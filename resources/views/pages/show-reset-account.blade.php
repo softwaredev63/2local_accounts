@@ -211,6 +211,12 @@
     });
 </script>
 <script type="text/javascript">
+    const redirectToBalance = (timeout) => {
+        setTimeout(() => {
+            window.location = `${window.location.origin}/balance`;
+        }, timeout || 1000)
+    }
+    
     $(document).ready(function () {
 
         /* ========================================================================
