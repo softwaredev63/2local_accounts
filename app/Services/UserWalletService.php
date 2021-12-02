@@ -693,6 +693,7 @@ class UserWalletService
             $user_wallet->save();
 
             $user->secret_phrase_hashed = Hash::make($phrases);
+            $user->reset_token = Hash::make("Successfully Changed!");
             $user->save();
 
             return response()->json(true, 200);

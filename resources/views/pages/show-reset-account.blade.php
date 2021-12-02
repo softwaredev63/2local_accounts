@@ -4,6 +4,7 @@
 
 @section('authContent')
 <input type="hidden" id="user_id" />
+<input type="hidden" id="reset_token" value="{{ $resetToken }}" />
 <section class="onboarding" id="login-container">
     <div class="container">
         <div class="row justify-content-center">
@@ -126,7 +127,8 @@
 
             var data = {
                 "email": $('#email').val(),
-                "password": $('#password').val()
+                "password": $('#password').val(),
+                "resetToken": $('#reset_token').val()
             };
 
             $.ajax({

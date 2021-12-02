@@ -26,31 +26,40 @@ class ResetAccountController extends Controller
 
   public function checkLoginStatus(Request $request)
   {
-    if (!$request->email || !$request->password){
+    if (!$request->email || !$request->password || !$request->resetToken){
       return array("login_status" => false, 'message' => "Fill all fields for Email and Password", "user_id" => "");
     } else {
       $user = User::where('email', $request->email)->first();
       if(!$user)
         return array("login_status" => false, 'message' => "This email account is not existing!", "user_id" => "");
       else {
-        if (!Hash::check($request->password, $user->password)) 
-          return array("login_status" => false, 'message' => "Password doesn't match!", "user_id" => "");
-        else {
-          return array("login_status" => true, 'message' => "Login Success!", "user_id" => $user->id);
+        if ($user->reset_token == $request->resetToken){
+          if (!Hash::check($request->password, $user->password)) 
+            return array("login_status" => false, 'message' => "Password doesn't match!", "user_id" => "");
+          else {
+            return array("login_status" => true, 'message' => "Login Success!", "user_id" => $user->id);
+          }
+        } else {
+          return array("login_status" => false, 'message' => "Your Reset token has been expired, Try to contact to supporter!", "user_id" => "");
         }
       }
     }
     
   }
 
-  public function showResetAccountPage()
+  public function showResetAccountPage(Request $request)
   {
-    return view('pages.show-reset-account')->with([
-      "login_status" => false,
-      "userEmail" => "",
-      "stepIndex" => 0,
-      "isTemporarySecretPhrase" => 0,
-    ]);
+    if ($request->has('token')) {
+      return view('pages.show-reset-account')->with([
+        "login_status" => false,
+        "userEmail" => "",
+        "stepIndex" => 0,
+        "isTemporarySecretPhrase" => 0,
+        "resetToken" => $request->input('token')
+      ]); 
+    } else {
+      return redirect(route('balance'));
+    }
   }
 
   public function resetUserInfo(Request $request){
