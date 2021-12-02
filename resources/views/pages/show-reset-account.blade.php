@@ -4,7 +4,6 @@
 
 @section('authContent')
 <input type="hidden" id="user_id" />
-<script type="text/javascript" src="js/custom_1.js"></script>
 <section class="onboarding" id="login-container">
     <div class="container">
         <div class="row justify-content-center">
@@ -423,18 +422,18 @@
         }
 
         // Disables ctrl+v, ctrl+x, ctrl+c.
-        $(userPhrasesTagSelector).on("cut", function(e) {
-            console.log('Cut not allowed!');
-            e.preventDefault();
-        });
-        $(userPhrasesTagSelector).on("copy", function(e) {
-            console.log('Copy not allowed!');
-            e.preventDefault();
-        });
-        $(userPhrasesInputPhrasesSelector).on("paste", function(e) {
-            console.log('Paste not allowed!');
-            e.preventDefault();
-        });
+        // $(userPhrasesTagSelector).on("cut", function(e) {
+        //     console.log('Cut not allowed!');
+        //     e.preventDefault();
+        // });
+        // $(userPhrasesTagSelector).on("copy", function(e) {
+        //     console.log('Copy not allowed!');
+        //     e.preventDefault();
+        // });
+        // $(userPhrasesInputPhrasesSelector).on("paste", function(e) {
+        //     console.log('Paste not allowed!');
+        //     e.preventDefault();
+        // });
 
         // Disables right-click.
         $(userPhrasesTagSelector).mousedown(function(e) {
