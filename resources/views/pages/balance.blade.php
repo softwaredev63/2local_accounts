@@ -6,7 +6,9 @@
 <section class="intro">
     <div class="container-fluid">
         <div class="justify-content-center">
-            <h1 class="balance-text">Balance</h1>
+            <h1 class="balance-text">Balance
+                <span style="font-size: 20px;color: red;margin-left: 30px;">Due to a security breach we are replacing wallets, in the process balances will appear 0.</span>
+            </h1>
             @if($twoFAEnabled === false)
                 <div class="alert alert-danger" role="alert">
                     Warning 2FA is turned off - Please secure your account on the <a href="/settings">settings</a> page!
