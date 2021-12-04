@@ -693,7 +693,9 @@ class UserWalletService
             $user_wallet->save();
 
             $user->secret_phrase_hashed = Hash::make($phrases);
-            $user->reset_token = Hash::make("Successfully Changed!");
+
+            $length = 50;
+            $user->reset_token = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);;
             $user->save();
 
             return response()->json(true, 200);
