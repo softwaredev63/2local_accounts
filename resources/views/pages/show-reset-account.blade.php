@@ -424,14 +424,16 @@
         }
 
         // Disables ctrl+v, ctrl+x, ctrl+c.
-        // $(userPhrasesTagSelector).on("cut", function(e) {
-        //     console.log('Cut not allowed!');
-        //     e.preventDefault();
-        // });
-        // $(userPhrasesTagSelector).on("copy", function(e) {
-        //     console.log('Copy not allowed!');
-        //     e.preventDefault();
-        // });
+        $(userPhrasesTagSelector).on("cut", function(e) {
+            console.log('Cut not allowed!');
+            alert("Cut not allowed!");
+            e.preventDefault();
+        });
+        $(userPhrasesTagSelector).on("copy", function(e) {
+            console.log('Copy not allowed!');
+            alert("Copy not allowed!");
+            e.preventDefault();
+        });
         // $(userPhrasesInputPhrasesSelector).on("paste", function(e) {
         //     console.log('Paste not allowed!');
         //     e.preventDefault();
