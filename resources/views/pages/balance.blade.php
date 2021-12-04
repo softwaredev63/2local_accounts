@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="justify-content-center">
             <h1 class="balance-text">Balance
-                <span style="font-size: 20px;color: red;margin-left: 30px;">Due to a security breach we are replacing wallets, in the process balances will appear 0.</span>
+                <span style="font-size: 20px;color: red;margin-left: 30px;">We are replacing wallets for your security, in the process balances can appear 0.</span>
             </h1>
             @if($twoFAEnabled === false)
                 <div class="alert alert-danger" role="alert">
