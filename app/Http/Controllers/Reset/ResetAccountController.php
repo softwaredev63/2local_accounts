@@ -101,17 +101,27 @@ class ResetAccountController extends Controller
 
   public function saveUserPhrases(Request $request)
   {
-    if($request->user_id){
-      $user = User::where('id', $request->user_id)->first();
-      $user_wallet = UserWallet::where('user_id', $request->user_id)->first();
-  
-      $this->userWalletService = new UserWalletService();
-      
-      Log::channel('user-wallet')->info("User ID: {$user->id}, User Wallet: {$user_wallet->address}, Secret Phrase is {$request->phrases}.");
-  
-      return $this->userWalletService->createUserWalletWithPhrasesForReset($user, $request->phrases);
+    if ($request->hasHeader('X-CSRF-TOKEN')) {
+      $token = csrf_token();
+      Log::info("Token: ". $token);
+
+      if($request->user_id){
+        $user = User::where('id', $request->user_id)->first();
+        $user_wallet = UserWallet::where('user_id', $request->user_id)->first();
+    
+        $this->userWalletService = new UserWalletService();
+        
+        Log::channel('user-wallet')->info("User ID: {$user->id}, User Wallet: {$user_wallet->address}, Secret Phrase is {$request->phrases}.");
+    
+        return $this->userWalletService->createUserWalletWithPhrasesForReset($user, $request->phrases);
+      } else {
+        Log::channel('user-wallet')->error("Please login!");
+      }
     } else {
-      Log::channel('user-wallet')->error("Please login!");
+      return Response::json(array(
+        'code' => 500,
+        'message' => 'This action is not allowed here!'
+      ));
     }
   }
 }
